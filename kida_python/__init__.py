@@ -1,2 +1,2 @@
-from _core import * 
-__all__ = ['_core']
+from search import *
+__all__ = ['search']
