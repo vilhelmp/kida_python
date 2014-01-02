@@ -37,12 +37,13 @@ try:
     # For Python 3.0 and later
     from urllib.request import urlopen, Request
     from urllib.parse import urlencode
-    from html import parser
+    from html import parser as htmlparser
 except ImportError:
     # Fall back to Python 2's urllib2
     from urllib import urlencode
     from urllib2 import urlopen, Request
-    from HTMLParser import HTMLParser
+    from HTMLParser import HTMLParser as htmlparser
+
 #######################
 # General settings
 
@@ -117,6 +118,17 @@ def _parse_charge(charge):
 
 def _parse_results(results):
     return None
+
+class tables2arrays(htmlparser):
+    def handle_starttag(self, tag, attrs):
+        if tag == 'table':
+            print "Encountered a start tag:", tag
+    def handle_endtag(self, tag):
+        if tag == 'table':
+            print "Encountered an end tag :", tag
+    def handle_data(self, data):
+        print "Encountered some data  :", data
+
 
 #######################
 # url and results handling
