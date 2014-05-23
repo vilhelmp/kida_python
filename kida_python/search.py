@@ -195,7 +195,6 @@ def query_element(name, charge = ['positive', 'negative', 'neutral'], timeout=TI
 def query_reaction(name, stype, timeout=TIMEOUT):
     return None
 
-
 #######################
 # url and results handling
 
